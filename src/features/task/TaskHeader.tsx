@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import { Modal } from "../../widgets/modal";
+import { Modal } from "@/widgets/modal";
 
-import Button from "../../shared/ui/button/Button";
+import Button from "@/shared/ui/button/Button";
 import Image from "next/image";
 import { useModal } from "@/shared/hooks/useModal";
 import Label from "@/shared/form/Label";

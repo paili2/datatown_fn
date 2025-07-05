@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import React from "react";
-import PageBreadcrumb from "../../shared/ui/page-breadcrumb/PageBreadCrumb";
+import PageBreadcrumb from "@/shared/ui/page-breadcrumb/PageBreadCrumb";
 import ChatSidebar from "./components/ChatSidebar";
 import ChatBox from "./components/ChatBox";
 

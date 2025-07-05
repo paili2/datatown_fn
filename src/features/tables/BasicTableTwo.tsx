@@ -6,11 +6,11 @@ import {
   TableCell,
   TableHeader,
   TableRow,
-} from "../../shared/ui/table";
+} from "@/shared/ui/table";
 
-import AvatarText from "../../shared/ui/avatar/AvatarText";
+import AvatarText from "@/shared/ui/avatar/AvatarText";
 
-import Badge from "../../shared/ui/badge/Badge";
+import Badge from "@/shared/ui/badge/Badge";
 import Checkbox from "@/shared/form/input/Checkbox";
 import { Trash, Trash2 } from "lucide-react";
 

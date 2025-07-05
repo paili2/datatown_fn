@@ -1,8 +1,7 @@
 import React from "react";
 import ChatBoxHeader from "./ChatBoxHeader";
-
-import Image from "next/image";
 import ChatBoxSendForm from "./ChatBoxSendForm";
+import Image from "next/image";
 
 interface ChatItem {
   id: number;

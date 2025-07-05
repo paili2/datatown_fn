@@ -2,8 +2,8 @@
 import React, { useState } from "react";
 import TaskItem from "./TaskItem";
 import { Task } from "./types/Task";
-import { Dropdown } from "../../../shared/ui/dropdown/Dropdown";
-import { DropdownItem } from "../../../shared/ui/dropdown/DropdownItem";
+import { Dropdown } from "@/shared/ui/dropdown/Dropdown";
+import { DropdownItem } from "@/shared/ui/dropdown/DropdownItem";
 import { MoreHorizontal } from "lucide-react";
 
 interface TaskLaneProps {

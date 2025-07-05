@@ -5,7 +5,7 @@ import {
   TableCell,
   TableHeader,
   TableRow,
-} from "../../../shared/ui/table";
+} from "@/shared/ui/table";
 
 export default function InvoiceTable() {
   return (

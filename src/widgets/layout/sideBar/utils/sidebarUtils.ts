@@ -20,7 +20,5 @@ export function getSidebarJustifyClass(
   isExpanded: boolean,
   isHovered: boolean
 ): string {
-  return !isExpanded && !isHovered
-    ? "lg:justify-center"
-    : "justify-start";
+  return !isExpanded && !isHovered ? "lg:justify-center" : "justify-start";
 }

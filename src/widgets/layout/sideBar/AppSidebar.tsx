@@ -7,7 +7,7 @@ import { useSidebarClasses } from "./styles/styles";
 import { menuItems } from "./data/menuItems";
 
 import RenderMenuItems from "./components/RenderMenuItems";
-import { othersItems } from "./data/authItems";
+import { authItems } from "./data/authItems";
 
 const AppSidebar: React.FC = () => {
   const { baseClass, widthClass, sidebarSlideClass } = useSidebarClasses();
@@ -30,11 +30,11 @@ const AppSidebar: React.FC = () => {
   useEffect(() => {
     let submenuMatched = false;
     ["main", "others"].forEach((menuType) => {
-      const items = menuType === "menu" ? menuItems : othersItems;
+      const items = menuType === "menu" ? menuItems : authItems;
       items.forEach((nav, index) => {
         if (nav.subItems?.some((sub) => isActive(sub.path))) {
           setOpenSubmenu({
-            type: menuType as "menu" | "Managements" | "Operations" | "General",
+            type: menuType as "menu" | "auth",
             index,
           });
           submenuMatched = true;
@@ -74,7 +74,7 @@ const AppSidebar: React.FC = () => {
               subMenuRefs={subMenuRefs}
               handleSubmenuToggle={toggleSubmenu}
               navItems={menuItems}
-              menuType={""}
+              menuType={"auth"}
             ></RenderMenuItems>
           </div>
         </nav>

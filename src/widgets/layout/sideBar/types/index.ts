@@ -31,7 +31,7 @@ export interface MenuDropdownItemProps {
 
 export type SectionProps = { title: string };
 
-export type MenuType = "menu" | "Managements" | "Operations" | "General" | "";
+export type MenuType = "menu" | "auth";
 
 export type SidebarMenuListProps = SidebarMenuBaseProps;
 
@@ -50,6 +50,6 @@ export interface MenuDropdownItemProps {
 }
 
 export interface BadgeProps {
-  label: "참여중" | "pro";
+  label: "참여중" | "완료";
   active: boolean;
 }

@@ -1,7 +1,7 @@
 import { User } from "lucide-react";
 import { NavItem } from "../types";
 
-export const othersItems: NavItem[] = [
+export const authItems: NavItem[] = [
   {
     icon: <User />,
     name: "Authentication",

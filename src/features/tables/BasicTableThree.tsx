@@ -1,14 +1,14 @@
 "use client";
 import { useState } from "react";
-import Badge from "../../shared/ui/badge/Badge";
+import Badge from "@/shared/ui/badge/Badge";
 import {
   Table,
   TableBody,
   TableCell,
   TableHeader,
   TableRow,
-} from "../../shared/ui/table";
-import Button from "../../shared/ui/button/Button";
+} from "@/shared/ui/table";
+import Button from "@/shared/ui/button/Button";
 import Image from "next/image";
 import TableDropdown from "@/shared/ui/table-dropdown/TableDropdown";
 

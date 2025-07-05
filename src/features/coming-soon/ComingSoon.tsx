@@ -3,7 +3,7 @@ import GridShape from "@/shared/ui/grid/GridShape";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import CountdownTimer from "../../shared/ui/coutdown-timer/CountdownTimer";
+import CountdownTimer from "@/shared/ui/coutdown-timer/CountdownTimer";
 
 export const metadata: Metadata = {
   title: "Next.js Coming Soon | TailAdmin - Next.js Dashboard Template",

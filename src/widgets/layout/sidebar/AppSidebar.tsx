@@ -5,7 +5,6 @@ import { useSidebarStore } from "./hooks/useSidebarStore";
 import SidebarLogo from "./components/SidebarLogo";
 import { useSidebarClasses } from "./styles/styles";
 import { menuItems } from "./data/menuItems";
-
 import RenderMenuItems from "./components/RenderMenuItems";
 import { authItems } from "./data/authItems";
 

@@ -40,8 +40,10 @@ const AppSidebar: React.FC = () => {
         }
       });
     });
-    !submenuMatched && setOpenSubmenu(null);
-  }, [pathname, isActive]);
+    if (!submenuMatched) {
+      setOpenSubmenu(null);
+    }
+  }, [pathname, isActive, setOpenSubmenu]);
 
   useEffect(() => {
     if (!openSubmenu) return;

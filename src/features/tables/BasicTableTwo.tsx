@@ -12,7 +12,7 @@ import AvatarText from "@/shared/ui/avatar/AvatarText";
 
 import Badge from "@/shared/ui/badge/Badge";
 import Checkbox from "@/shared/form/input/Checkbox";
-import { Trash, Trash2 } from "lucide-react";
+import { Trash2 } from "lucide-react";
 
 // Interface for the table row data
 interface TableRowData {

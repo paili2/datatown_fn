@@ -1,8 +1,6 @@
 import { Outfit } from "next/font/google";
 import "./globals.css";
 
-import { useThemeStore } from "@/shared/hooks/useThemeStore";
-
 const outfit = Outfit({
   subsets: ["latin"],
 });

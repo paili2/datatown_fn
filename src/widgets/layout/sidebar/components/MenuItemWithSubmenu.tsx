@@ -2,7 +2,6 @@ import { ChevronDownIcon } from "lucide-react";
 import { useSidebarStore } from "../hooks/useSidebarStore";
 import { MenuItemWithSubmenuProps } from "../types";
 import {
-  getSidebarJustifyClass,
   isDesktopSidebarOpen,
   isSidebarOpen,
   isSubmenuOpen,

@@ -1,13 +1,5 @@
 import { NavItem } from "../types";
-import {
-  Folder,
-  Grid2X2Icon,
-  Rows3,
-  Sheet,
-  StickyNote,
-  UserCircle2Icon,
-  Users,
-} from "lucide-react";
+import { Folder, Grid2X2Icon, StickyNote, UserCircle2Icon } from "lucide-react";
 
 export const menuItems: NavItem[] = [
   {
@@ -42,35 +34,4 @@ export const menuItems: NavItem[] = [
       { name: "내부 관리자", path: "/system/admins" },
     ],
   },
-  // {
-  //   icon: <Folder />,
-  //   name: "Project List",
-  //   subItems: [
-  //     { name: "참여중인 프로젝트", path: "/project/active", ongoing: true },
-  //     { name: "참여한 프로젝트", path: "/project/archived" },
-  //   ],
-  // },
-  // {
-  //   icon: <Rows3 />,
-  //   name: "Consortium List",
-  //   subItems: [
-  //     { name: "참여중인 컨소시엄", path: "/consortium/active", ongoing: true },
-  //     { name: "참여한 컨소시엄", path: "/consortium/archived" },
-  //   ],
-  // },
-  // {
-  //   icon: <Sheet />,
-  //   name: "Contract & Settlement List",
-  //   path: "/contracts",
-  // },
-  // {
-  //   icon: <Users />,
-  //   name: "Organization",
-  //   path: "/company",
-  // },
-  // {
-  //   icon: <UserCircle2Icon />,
-  //   name: "Internal Admins",
-  //   path: "/system/admins",
-  // },
 ];

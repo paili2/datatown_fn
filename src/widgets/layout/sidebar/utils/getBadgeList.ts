@@ -1,11 +1,8 @@
-export type BadgeInfo = { flag: boolean; label: "참여중" | "pro" };
+import { BadgeInfo } from "../types";
 
-export function getBadgeList(
-  isOngoing: boolean,
-  isPro: boolean
-): BadgeInfo[] {
+export function getBadgeList(isOngoing: boolean, isPro: boolean): BadgeInfo[] {
   return [
     { flag: isOngoing, label: "참여중" },
-    { flag: isPro, label: "pro" },
+    { flag: isPro, label: "완료" },
   ];
 }

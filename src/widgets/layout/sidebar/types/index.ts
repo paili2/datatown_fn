@@ -53,3 +53,5 @@ export interface BadgeProps {
   label: "참여중" | "완료";
   active: boolean;
 }
+
+export type BadgeInfo = { flag: boolean; label: "참여중" | "완료" };

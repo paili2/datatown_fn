@@ -1,27 +1,18 @@
+"use client";
+
 import ComponentCard from "@/shared/ui/component-card/ComponentCard";
 import PageBreadcrumb from "@/shared/ui/page-breadcrumb/PageBreadCrumb";
-import BasicTableThree from "@/features/tables/BasicTableThree";
-import BasicTableTwo from "@/features/tables/BasicTableTwo";
+import { AdminListView } from "@/features/list-view";
 
-import { Metadata } from "next";
 import React from "react";
 
-export const metadata: Metadata = {
-  title: "Next.js Basic Data Table | TailAdmin - Next.js Dashboard Template",
-  description:
-    "This is Next.js Basic Data Table page for TailAdmin - Next.js Tailwind CSS Admin Dashboard Template",
-};
-
-export default function BasicTables() {
+export default function InternalAccounts() {
   return (
     <div>
-      <PageBreadcrumb pageTitle="Basic Tables" />
+      <PageBreadcrumb pageTitle="Internal Accounts" />
       <div className="space-y-6">
-        <ComponentCard title="Basic Table 2">
-          <BasicTableTwo />
-        </ComponentCard>
-        <ComponentCard title="Basic Table 3">
-          <BasicTableThree />
+        <ComponentCard title="관리자 목록">
+          <AdminListView />
         </ComponentCard>
       </div>
     </div>

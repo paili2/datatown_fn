@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function MainPage() {
   return (
     <div>
-      <PageBreadcrumb pageTitle="Task Kanban" />
+      <PageBreadcrumb pageTitle="프로젝트 대시보드" />
       <div className="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
         <TaskHeader />
         <KanbanBoard />

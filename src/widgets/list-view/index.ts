@@ -11,7 +11,6 @@ export type {
   ListHeaderProps,
   ListPaginationProps,
   HeaderButtonConfig,
-  ListViewActionsConfig,
 } from "./types/components";
 
 // Generic types from ListView component

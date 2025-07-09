@@ -21,9 +21,3 @@ export interface HeaderButtonConfig {
   handler: () => void;
   variant?: "primary" | "success" | "danger" | "outline";
 }
-
-export interface ListViewActionsConfig {
-  headerButtons?: {
-    buttons: HeaderButtonConfig[];
-  };
-}

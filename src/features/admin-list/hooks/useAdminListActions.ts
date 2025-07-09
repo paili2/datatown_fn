@@ -1,6 +1,6 @@
 "use client";
 
-import { ListViewActionsConfig } from "@/widgets/list-view/types/components";
+import { HeaderButtonConfig } from "@/widgets/list-view/types/components";
 
 export function useAdminListActions() {
   const handleAdd = () => {
@@ -13,25 +13,21 @@ export function useAdminListActions() {
     // 여기에 일괄 삭제 로직 추가하면 됨
   };
 
-  const config: ListViewActionsConfig = {
-    headerButtons: {
-      buttons: [
-        {
-          text: "추가",
-          handler: handleAdd,
-          variant: "success",
-        },
-        {
-          text: "삭제",
-          handler: handleDelete,
-          variant: "danger",
-        },
-      ],
+  const headerButtons: HeaderButtonConfig[] = [
+    {
+      text: "추가",
+      handler: handleAdd,
+      variant: "success",
     },
-  };
+    {
+      text: "삭제",
+      handler: handleDelete,
+      variant: "danger",
+    },
+  ];
 
   return {
-    config,
+    headerButtons,
     handleAdd,
     handleDelete,
   };

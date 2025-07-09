@@ -7,7 +7,7 @@ import { KResource } from "../types";
 import { useKResourcesListActions } from "../hooks/useKResourcesListActions";
 
 export default function KResourcesListView() {
-  const { config } = useKResourcesListActions();
+  const { headerButtons } = useKResourcesListActions();
 
   const kResourcesColumns: ColumnConfig<KResource>[] = [
     {
@@ -34,7 +34,6 @@ export default function KResourcesListView() {
             <span className="text-sm font-medium">
               {getCountryName(item.country_code)}
             </span>
-            <span className="text-xs text-gray-500">({item.country_code})</span>
           </div>
         );
       },
@@ -51,18 +50,18 @@ export default function KResourcesListView() {
     },
     {
       key: "resource_type",
-      header: "유형",
+      header: "리소스 타입",
       render: (item) => {
         const getTypeColor = (type: string) => {
           switch (type) {
             case "Database":
-              return "error";
-            case "Web Server":
-              return "warning";
-            case "Storage":
-              return "success";
-            case "Load Balancer":
               return "primary";
+            case "Web Server":
+              return "success";
+            case "Storage":
+              return "warning";
+            case "Load Balancer":
+              return "info";
             case "Cache":
               return "warning";
             case "Monitoring":
@@ -70,13 +69,13 @@ export default function KResourcesListView() {
             case "Backup":
               return "primary";
             case "Development":
-              return "warning";
+              return "light";
             case "Testing":
-              return "success";
+              return "light";
             case "Staging":
-              return "primary";
+              return "light";
             default:
-              return "primary";
+              return "light";
           }
         };
 
@@ -96,15 +95,30 @@ export default function KResourcesListView() {
             case "active":
               return "success";
             case "inactive":
-              return "error";
+              return "danger";
+            case "pending":
+              return "warning";
             default:
-              return "primary";
+              return "light";
+          }
+        };
+
+        const getStatusText = (status: string) => {
+          switch (status) {
+            case "active":
+              return "활성";
+            case "inactive":
+              return "비활성";
+            case "pending":
+              return "대기중";
+            default:
+              return status;
           }
         };
 
         return (
           <Badge size="sm" color={getStatusColor(item.status)}>
-            {item.status === "active" ? "Active" : "Inactive"}
+            {getStatusText(item.status)}
           </Badge>
         );
       },
@@ -136,16 +150,6 @@ export default function KResourcesListView() {
     },
   ];
 
-  const handleViewMore = (item: KResource) => {
-    console.log("View more:", item);
-    // 여기에 상세 보기 로직 추가하면 됨
-  };
-
-  const handleDelete = (item: KResource) => {
-    console.log("Delete:", item);
-    // 여기에 삭제 로직 추가하면 됨
-  };
-
   return (
     <ListView
       data={kResourcesData}
@@ -154,9 +158,7 @@ export default function KResourcesListView() {
       searchPlaceholder="K-Resources 검색..."
       searchFields={["name", "id", "resource_type"]}
       showCheckbox={true}
-      actionsConfig={config}
-      onViewMore={handleViewMore}
-      onDelete={handleDelete}
+      headerButtons={headerButtons}
       onSelectionChange={(selectedIds) => {
         console.log("선택된 ID들:", selectedIds);
       }}

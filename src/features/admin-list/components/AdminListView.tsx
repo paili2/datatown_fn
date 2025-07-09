@@ -7,7 +7,7 @@ import { AdminAuth } from "../types";
 import { useAdminListActions } from "../hooks/useAdminListActions";
 
 export default function AdminListView() {
-  const { config } = useAdminListActions();
+  const { headerButtons } = useAdminListActions();
 
   const adminColumns: ColumnConfig<AdminAuth>[] = [
     {
@@ -17,23 +17,23 @@ export default function AdminListView() {
     },
     {
       key: "name",
-      header: "관리자 이름",
+      header: "이름",
       render: (item) => <span className="font-medium">{item.name}</span>,
     },
     {
       key: "authority",
-      header: "역할",
+      header: "권한",
       render: (item) => {
         const getAuthorityColor = (authority: string) => {
           switch (authority) {
-            case "Operator":
-              return "error";
-            case "Manager":
-              return "warning";
             case "Admin":
+              return "danger";
+            case "Manager":
               return "success";
-            default:
+            case "Operator":
               return "primary";
+            default:
+              return "light";
           }
         };
 
@@ -45,11 +45,6 @@ export default function AdminListView() {
       },
     },
     {
-      key: "signup_date",
-      header: "가입일",
-      render: (item) => item.signup_date,
-    },
-    {
       key: "status",
       header: "상태",
       render: (item) => {
@@ -58,9 +53,9 @@ export default function AdminListView() {
             case "Active":
               return "success";
             case "InActive":
-              return "error";
+              return "danger";
             default:
-              return "primary";
+              return "light";
           }
         };
 
@@ -72,21 +67,16 @@ export default function AdminListView() {
       },
     },
     {
+      key: "signup_date",
+      header: "가입일",
+      render: (item) => item.signup_date,
+    },
+    {
       key: "last_login",
       header: "최근 로그인",
       render: (item) => item.last_login,
     },
   ];
-
-  const handleViewMore = (item: AdminAuth) => {
-    console.log("View more:", item);
-    // 여기에 상세 보기 로직 추가하면 됨
-  };
-
-  const handleDelete = (item: AdminAuth) => {
-    console.log("Delete:", item);
-    // 여기에 삭제 로직 추가하면 됨
-  };
 
   return (
     <ListView
@@ -96,9 +86,7 @@ export default function AdminListView() {
       searchPlaceholder="관리자 검색..."
       searchFields={["name", "id", "authority"]}
       showCheckbox={true}
-      actionsConfig={config}
-      onViewMore={handleViewMore}
-      onDelete={handleDelete}
+      headerButtons={headerButtons}
       onSelectionChange={(selectedIds) => {
         console.log("선택된 ID들:", selectedIds);
       }}

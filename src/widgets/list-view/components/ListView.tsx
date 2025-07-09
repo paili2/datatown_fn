@@ -20,15 +20,12 @@ export interface ListViewProps<T> {
   title?: string;
   searchPlaceholder?: string;
   itemsPerPage?: number;
-  onViewMore?: (item: T) => void;
-  onDelete?: (item: T) => void;
   className?: string;
   searchFields?: (keyof T)[];
   showCheckbox?: boolean;
   onSelectionChange?: (selectedIds: string[]) => void;
   getItemId?: (item: T) => string;
-  // 새로운 config 방식
-  actionsConfig?: import("../types/components").ListViewActionsConfig;
+  headerButtons?: import("../types/components").HeaderButtonConfig[];
 }
 
 export default function ListView<T>({
@@ -45,7 +42,7 @@ export default function ListView<T>({
     const id = (item as Record<string, unknown>).id;
     return id ? String(id) : "";
   },
-  actionsConfig,
+  headerButtons,
 }: ListViewProps<T>) {
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage] = useState(1);
@@ -119,7 +116,7 @@ export default function ListView<T>({
         onSearch={handleSearch}
         showSearch={searchFields.length > 0}
         searchPlaceholder={searchPlaceholder}
-        buttons={actionsConfig?.headerButtons?.buttons}
+        buttons={headerButtons}
       />
 
       <div className="overflow-hidden">

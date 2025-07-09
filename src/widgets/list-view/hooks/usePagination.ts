@@ -2,7 +2,26 @@
 
 // hooks/usePagination.ts
 import { useState, useMemo } from "react";
-import { UsePaginationProps, UsePaginationReturn } from "../types/hooks";
+
+interface UsePaginationProps {
+  data: unknown[];
+  itemsPerPage: number;
+  initialPage?: number;
+}
+
+interface UsePaginationReturn {
+  currentPage: number;
+  totalPages: number;
+  currentItems: unknown[];
+  goToPage: (page: number) => void;
+  nextPage: () => void;
+  previousPage: () => void;
+  hasNextPage: boolean;
+  hasPreviousPage: boolean;
+  startIndex: number;
+  endIndex: number;
+  totalItems: number;
+}
 
 export function usePagination({
   data,

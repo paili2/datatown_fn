@@ -5,8 +5,7 @@ import { ReactNode, useState, useMemo } from "react";
 import ListHeader from "./ListHeader";
 import ListPagination from "./ListPagination";
 import { usePagination } from "../hooks/usePagination";
-import MoreIcon from "./MoreIcon";
-import TableDropdown from "@/shared/ui/table-dropdown/TableDropdown";
+import Checkbox from "@/shared/form/input/Checkbox";
 
 export interface ColumnConfig<T> {
   key: keyof T;
@@ -25,6 +24,11 @@ export interface ListViewProps<T> {
   onDelete?: (item: T) => void;
   className?: string;
   searchFields?: (keyof T)[];
+  showCheckbox?: boolean;
+  onSelectionChange?: (selectedIds: string[]) => void;
+  getItemId?: (item: T) => string;
+  // 새로운 config 방식
+  actionsConfig?: import("../types/components").ListViewActionsConfig;
 }
 
 export default function ListView<T>({
@@ -33,13 +37,20 @@ export default function ListView<T>({
   title = "List View",
   searchPlaceholder = "Search...",
   itemsPerPage = 10,
-  onViewMore,
-  onDelete,
   className = "",
   searchFields = [],
+  showCheckbox = false,
+  onSelectionChange,
+  getItemId = (item: T) => {
+    const id = (item as Record<string, unknown>).id;
+    return id ? String(id) : "";
+  },
+  actionsConfig,
 }: ListViewProps<T>) {
   const [searchTerm, setSearchTerm] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage] = useState(1);
+  const [selectedIds, setSelectedIds] = useState<string[]>([]);
+  const [selectAll, setSelectAll] = useState<boolean>(false);
 
   // 검색 필터링
   const filteredData = useMemo(() => {
@@ -72,6 +83,33 @@ export default function ListView<T>({
     pagination.goToPage(page);
   };
 
+  // 체크박스 관련 핸들러
+  const handleSelectAll = () => {
+    const newSelectAll = !selectAll;
+    setSelectAll(newSelectAll);
+
+    if (newSelectAll) {
+      const allIds = pagination.currentItems.map((item) =>
+        getItemId(item as T)
+      );
+      setSelectedIds(allIds);
+      onSelectionChange?.(allIds);
+    } else {
+      setSelectedIds([]);
+      onSelectionChange?.([]);
+    }
+  };
+
+  const handleRowSelect = (id: string) => {
+    const newSelectedIds = selectedIds.includes(id)
+      ? selectedIds.filter((selectedId) => selectedId !== id)
+      : [...selectedIds, id];
+
+    setSelectedIds(newSelectedIds);
+    setSelectAll(newSelectedIds.length === pagination.currentItems.length);
+    onSelectionChange?.(newSelectedIds);
+  };
+
   return (
     <div
       className={`rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1 ${className}`}
@@ -81,6 +119,7 @@ export default function ListView<T>({
         onSearch={handleSearch}
         showSearch={searchFields.length > 0}
         searchPlaceholder={searchPlaceholder}
+        buttons={actionsConfig?.headerButtons?.buttons}
       />
 
       <div className="overflow-hidden">
@@ -88,6 +127,11 @@ export default function ListView<T>({
           <table className="w-full table-auto">
             <thead className="border-gray-100 border-y dark:border-white/[0.05]">
               <tr>
+                {showCheckbox && (
+                  <th className="px-4 py-3 font-normal text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                    <Checkbox checked={selectAll} onChange={handleSelectAll} />
+                  </th>
+                )}
                 {columns.map((column, index) => (
                   <th
                     key={index}
@@ -98,63 +142,36 @@ export default function ListView<T>({
                     {column.header}
                   </th>
                 ))}
-                {(onViewMore || onDelete) && (
-                  <th className="px-4 py-3 font-normal text-gray-500 text-start text-theme-sm dark:text-gray-400">
-                    <div className="relative">
-                      <span className="sr-only">Action</span>
-                    </div>
-                  </th>
-                )}
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100 dark:divide-white/[0.05]">
-              {pagination.currentItems.map((item, rowIndex) => (
-                <tr key={rowIndex}>
-                  {columns.map((column, colIndex) => (
-                    <td
-                      key={colIndex}
-                      className={`px-4 py-4 text-gray-700 text-theme-sm dark:text-gray-400 ${
-                        column.className || ""
-                      }`}
-                    >
-                      {column.render(item, rowIndex)}
-                    </td>
-                  ))}
-                  {(onViewMore || onDelete) && (
-                    <td className="px-4 py-4 text-gray-700 text-theme-sm dark:text-gray-400">
-                      <div className="relative inline-block">
-                        <TableDropdown
-                          dropdownButton={
-                            <button className="text-gray-500 dark:text-gray-400">
-                              <MoreIcon />
-                            </button>
-                          }
-                          dropdownContent={
-                            <>
-                              {onViewMore && (
-                                <button
-                                  onClick={() => onViewMore(item)}
-                                  className="text-xs flex w-full rounded-lg px-3 py-2 text-left font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
-                                >
-                                  상세보기
-                                </button>
-                              )}
-                              {onDelete && (
-                                <button
-                                  onClick={() => onDelete(item)}
-                                  className="text-xs flex w-full rounded-lg px-3 py-2 text-left font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
-                                >
-                                  삭제
-                                </button>
-                              )}
-                            </>
-                          }
+              {pagination.currentItems.map((item, rowIndex) => {
+                const itemId = getItemId(item as T);
+                const isSelected = selectedIds.includes(itemId);
+
+                return (
+                  <tr key={rowIndex}>
+                    {showCheckbox && (
+                      <td className="px-4 py-4 text-gray-700 text-theme-sm dark:text-gray-400">
+                        <Checkbox
+                          checked={isSelected}
+                          onChange={() => handleRowSelect(itemId)}
                         />
-                      </div>
-                    </td>
-                  )}
-                </tr>
-              ))}
+                      </td>
+                    )}
+                    {columns.map((column, colIndex) => (
+                      <td
+                        key={colIndex}
+                        className={`px-4 py-4 text-gray-700 text-theme-sm dark:text-gray-400 ${
+                          column.className || ""
+                        }`}
+                      >
+                        {column.render(item as T, rowIndex)}
+                      </td>
+                    ))}
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>

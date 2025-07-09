@@ -3,6 +3,7 @@
 
 import { useState } from "react";
 import { ListHeaderProps } from "../types/components";
+import Button from "@/shared/ui/button/Button";
 
 export default function ListHeader({
   title = "Latest Transactions",
@@ -10,6 +11,7 @@ export default function ListHeader({
   showSearch = true,
   searchPlaceholder = "Search...",
   className = "",
+  buttons,
 }: ListHeaderProps) {
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -20,18 +22,15 @@ export default function ListHeader({
   };
 
   return (
-    <div
-      className={`flex flex-col gap-2 px-5 mb-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 ${className}`}
-    >
-      {/* 제목 부분 */}
-      <div>
-        <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
-          {title}
-        </h3>
-      </div>
-
-      {/* 검색 및 액션 버튼들 */}
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+    <div>
+      {/* 제목 */}
+      <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90 px-5 mb-4 sm:px-6">
+        {title}
+      </h3>
+      <div
+        className={`flex flex-col gap-2 px-5 mb-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 ${className}`}
+      >
+        {/* 검색창 */}
         {showSearch && (
           <form onSubmit={(e) => e.preventDefault()}>
             <div className="relative">
@@ -46,6 +45,22 @@ export default function ListHeader({
             </div>
           </form>
         )}
+
+        <div className="flex gap-2">
+          {buttons &&
+            buttons.length > 0 &&
+            buttons.map((button, index) => (
+              <Button
+                key={index}
+                variant={button.variant || "primary"}
+                size="sm"
+                onClick={button.handler}
+                className={index > 0 ? "ml-2" : ""}
+              >
+                {button.text}
+              </Button>
+            ))}
+        </div>
       </div>
     </div>
   );

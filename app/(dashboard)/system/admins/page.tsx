@@ -1,8 +1,7 @@
 "use client";
 
-import ComponentCard from "@/shared/ui/component-card/ComponentCard";
 import PageBreadcrumb from "@/shared/ui/page-breadcrumb/PageBreadCrumb";
-import { AdminListView } from "@/features/list-view";
+import { AdminListView } from "@/features/admin-list";
 
 import React from "react";
 
@@ -11,9 +10,7 @@ export default function InternalAccounts() {
     <div>
       <PageBreadcrumb pageTitle="Internal Accounts" />
       <div className="space-y-6">
-        <ComponentCard title="관리자 목록">
-          <AdminListView />
-        </ComponentCard>
+        <AdminListView />
       </div>
     </div>
   );

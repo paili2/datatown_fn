@@ -20,7 +20,7 @@ export const menuItems: NavItem[] = [
     name: "K리소스",
     subItems: [
       { name: "K-Resources 리스트", path: "/k-resources" },
-      { name: "우리 회사 K-Resources", path: "/k-resources/me" },
+      { name: "우리 회사 K-Resources", path: "/k-resources/k-list" },
     ],
   },
   {

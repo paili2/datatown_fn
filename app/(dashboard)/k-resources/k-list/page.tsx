@@ -1,4 +1,4 @@
-import { KResourcesListView } from "@/features/k-resources/k-resources-list";
+import { KResourcesListView } from "@/features/k-resource/k-resources-list";
 import PageBreadcrumb from "@/shared/ui/page-breadcrumb/PageBreadCrumb";
 
 export default function KResourceList() {

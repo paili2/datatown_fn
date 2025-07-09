@@ -19,8 +19,8 @@ export const menuItems: NavItem[] = [
     icon: <StickyNote />,
     name: "K리소스",
     subItems: [
-      { name: "K-Resources 리스트", path: "/k-resources" },
-      { name: "우리 회사 K-Resources", path: "/k-resources/k-list" },
+      { name: "K-Resources 리스트", path: "/k-resources/k-list" },
+      { name: "우리 회사 K-Resources", path: "/k-resources/" },
     ],
   },
   {

@@ -1,18 +1,18 @@
-'use client';
-
-import Badge, { BadgeColor } from '@/shared/ui/badge/Badge';
-import { ListView, ColumnConfig } from '@/widgets/list-view';
-import { adminData } from '../data/adminList';
-import { AdminAuth } from '../types';
-import { useAdminListActions } from '../hooks/useAdminListActions';
 import { Authority } from '@/entities/admins/model/types';
+import { AdminAuth } from '@/features/admin-list';
+import Badge, { BadgeColor } from '@/shared/ui/badge/Badge';
 import Pill from '@/shared/ui/pill/pill';
-
+import { ReactNode } from 'react';
 type Status = 'Active' | 'InActive';
 type BadgeMapping<K extends string, V extends BadgeColor> = Record<K, V>;
+export interface ColumnConfig<T> {
+  key: keyof T;
+  header: string;
+  render: (item: T, index: number) => ReactNode;
+  className?: string;
+}
 
-export default function AdminListView() {
-  const { headerButtons } = useAdminListActions();
+const AdminListTableHeader = () => {
   const getAuthorityColor: BadgeMapping<Authority, BadgeColor> = {
     Admin: 'danger',
     Member: 'success',
@@ -68,13 +68,18 @@ export default function AdminListView() {
   ];
 
   return (
-    <ListView
-      data={adminData}
-      columns={adminColumns}
-      title="관리자 목록"
-      searchPlaceholder="관리자 검색..."
-      searchFields={['name', 'id', 'authority']}
-      // headerButtons={headerButtons}
-    />
+    <>
+      <thead className="border-gray-100 border-y dark:border-white/[0.05]">
+        <tr>
+          {adminColumns.map((column, index) => (
+            <th key={String(column.key) + index} className={`px-4 py-3 font-normal text-gray-500 text-start text-theme-sm dark:text-gray-400 ${column.className || ''}`}>
+              {column.header}
+            </th>
+          ))}
+        </tr>
+      </thead>
+    </>
   );
-}
+};
+
+export default AdminListTableHeader;

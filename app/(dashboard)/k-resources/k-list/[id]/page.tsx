@@ -12,7 +12,7 @@ const Page = () => {
       <PageBreadcrumb pageTitle={'#109 라이즈(RIZE)'} />
       <div className="w-full flex gap-25">
         <section className="w-2/3 mx-auto flex flex-col justify-between pl-10 gap-10">
-          <DetailSection></DetailSection>
+          <DetailSection />
           <div className="flex flex-col justify-between gap-2">
             <BlockHeading title="설명"></BlockHeading>
             <TextBox text={'SM 엔터테인먼트 소속 보이그룹'}></TextBox>

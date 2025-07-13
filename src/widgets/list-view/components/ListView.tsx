@@ -11,7 +11,6 @@ import AdminListTableBody from '@/widgets/admin-list/AdminListTableBody';
 
 export interface ListViewProps<T> {
   data: T[];
-  columns: ColumnConfig<T>[];
   title?: string;
   searchPlaceholder?: string;
   itemsPerPage?: number;
@@ -20,19 +19,17 @@ export interface ListViewProps<T> {
   headerButtons?: import('../types/components').HeaderButtonConfig[];
 }
 
-export default function ListView<T>({ data, columns, title = 'List View', searchPlaceholder = 'Search...', itemsPerPage = 10, className = '', searchFields = [], headerButtons }: ListViewProps<T>) {
+export default function ListView<T>({ data, title = 'List View', searchPlaceholder = 'Search...', itemsPerPage = 10, className = '', searchFields = [], headerButtons }: ListViewProps<T>) {
   // 필터링 기능 제거됨
 
   return (
     <div className={`rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1 ${className}`}>
       {/* <ListHeader title={title} onSearch={handleSearch} showSearch={searchFields.length > 0} searchPlaceholder={searchPlaceholder} buttons={headerButtons} /> */}
-      <div className="overflow-hidden">
-        <div className="max-w-full px-5 overflow-x-auto sm:px-6">
-          <table className="w-full table-auto">
-            <AdminListTableHeader />
-            <AdminListTableBody data={data} columns={columns} />
-          </table>
-        </div>
+      <div className="overflow-x-auto max-w-full px-5 sm:px-6">
+        <table className="w-full table-auto">
+          <AdminListTableHeader />
+          <AdminListTableBody data={data} columns={columns} />
+        </table>
       </div>
       {/* 페이지네이션은 tbody와 분리되어야 하므로, 필요시 아래처럼 별도로 사용하세요.
       <ListPagination

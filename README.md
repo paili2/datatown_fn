@@ -58,3 +58,9 @@
 - **widgets**: “섹션 / 그룹 / 조합”
 - **features**: “기능(동사) / 액션”
 - **shared**: “재료(버튼/유틸) / 글로벌”
+
+components/: 테이블 위젯과 서브컴포넌트
+
+hooks/: 해당 위젯에서만 쓰는 커스텀 훅
+utils/: 위젯 전용 유틸리티
+index.ts: 메인 export(외부 import 포인트)

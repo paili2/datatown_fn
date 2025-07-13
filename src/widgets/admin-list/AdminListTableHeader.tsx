@@ -51,20 +51,20 @@ const AdminListTableHeader = () => {
       ),
     },
     {
-      key: 'status',
-      header: '상태',
-      render: (item) => renderBadge(item.status, statusColor),
-    },
-    {
       key: 'signup_date',
       header: '가입일',
       render: (item) => item.signup_date,
     },
     {
-      key: 'last_login',
-      header: '최근 로그인',
-      render: (item) => item.last_login,
+      key: 'status',
+      header: '상태',
+      render: (item) => renderBadge(item.status, statusColor),
     },
+    // {
+    //   key: 'last_login',
+    //   header: '최근 로그인',
+    //   render: (item) => item.last_login,
+    // },
   ];
 
   return (

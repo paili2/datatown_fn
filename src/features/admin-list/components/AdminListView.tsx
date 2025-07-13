@@ -15,7 +15,7 @@ export default function AdminListView() {
       data={adminData}
       title="관리자 목록"
       searchPlaceholder="관리자 검색..."
-      searchFields={['name', 'id', 'authority']}
+      searchFields={['name', 'id', 'role']}
       // headerButtons={headerButtons}
     />
   );

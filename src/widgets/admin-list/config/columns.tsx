@@ -1,22 +1,7 @@
 import { AdminAuth } from '@/features/admin-list/types';
 import Pill from '@/shared/ui/pill/pill';
-import { ColumnConfig } from '../AdminListTableHeader';
-import Badge, { BadgeColor } from '@/shared/ui/badge/Badge';
-
-type Status = 'Active' | 'InActive';
-type BadgeMapping<K extends string, V extends BadgeColor> = Record<K, V>;
-const statusColor: BadgeMapping<Status, BadgeColor> = {
-  Active: 'success',
-  InActive: 'danger',
-};
-
-const renderBadge = <K extends string, V extends BadgeColor>(itemValue: K, mapping: BadgeMapping<K, V>) => {
-  return (
-    <Badge size="sm" color={mapping[itemValue]}>
-      {itemValue}
-    </Badge>
-  );
-};
+import { ColumnConfig } from '../components/AdminListTableHeader';
+import { statusVariantMap } from './statusVariantMap';
 
 export const adminColumns: ColumnConfig<AdminAuth>[] = [
   {
@@ -30,22 +15,22 @@ export const adminColumns: ColumnConfig<AdminAuth>[] = [
     render: (item) => <span className="font-medium">{item.name}</span>,
   },
   {
-    key: 'authority',
+    key: 'role',
     header: '권한',
-    render: (item) => (
-      <Pill color="default" variant="primary">
-        {item.authority}
-      </Pill>
-    ),
+    render: (item) => <span className="font-medium">{item.role}</span>,
   },
   {
     key: 'signup_date',
     header: '가입일',
-    render: (item) => item.signup_date,
+    render: (item) => <span className="font-medium">{item.signup_date}</span>,
   },
   {
     key: 'status',
     header: '상태',
-    render: (item) => renderBadge(item.status, statusColor),
+    render: (item) => (
+      <Pill color="default" variant={statusVariantMap[item.status]}>
+        {item.status}
+      </Pill>
+    ),
   },
 ];

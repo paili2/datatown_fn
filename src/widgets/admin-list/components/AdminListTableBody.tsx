@@ -1,5 +1,5 @@
 import { AdminAuth } from '@/features/admin-list/types';
-import { adminColumns } from './config/columns';
+import { adminColumns } from '../config/columns';
 
 const AdminListTableBody = <T,>({ data }: { data: T[] }) => {
   return (

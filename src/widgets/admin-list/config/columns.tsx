@@ -1,5 +1,5 @@
 import { AdminAuth } from '@/features/admin-list/types';
-import Pill from '@/shared/ui/pill/pill';
+import Pill from '@/shared/ui/pill/Pill';
 import { ColumnConfig } from '../components/AdminListTableHeader';
 import { statusVariantMap } from './statusVariantMap';
 

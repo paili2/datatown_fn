@@ -25,7 +25,7 @@ export default function ListView<T>({ data, itemsPerPage = 10, className = '', h
       <div className="overflow-x-auto max-w-full px-5 sm:px-6">
         <table className="w-full table-auto">
           <AdminListTableHeader />
-          <AdminListTableBody data={data} />
+          <AdminListTableBody adminUsers={data} />
         </table>
       </div>
       {/* 페이지네이션은 tbody와 분리되어야 하므로, 필요시 아래처럼 별도로 사용하세요.

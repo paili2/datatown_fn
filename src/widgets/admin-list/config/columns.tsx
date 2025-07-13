@@ -1,9 +1,15 @@
-import { AdminAuth } from '@/features/admin-list/types';
-import Pill from '@/shared/ui/pill/Pill';
-import { ColumnConfig } from '../components/AdminListTableHeader';
+import { AdminUser } from '@/features/admin-list/types';
 import { statusVariantMap } from './statusVariantMap';
+import Pill from '@/shared/ui/pill/Pill';
+import { ReactNode } from 'react';
 
-export const adminColumns: ColumnConfig<AdminAuth>[] = [
+interface ColumnConfig<T> {
+  key: keyof T;
+  header: string;
+  render: (item: T) => ReactNode;
+  className?: string;
+}
+export const adminColumns: ColumnConfig<AdminUser>[] = [
   {
     key: 'id',
     header: '관리자 ID',

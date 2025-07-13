@@ -1,6 +1,6 @@
-import { AdminAuth } from '../types';
+import { AdminUser } from '../types';
 
-export const adminData: AdminAuth[] = [
+export const adminData: AdminUser[] = [
   {
     id: 'ADM001',
     name: 'John Smith',

@@ -1,4 +1,4 @@
-export interface AdminAuth {
+export interface AdminUser {
   id: string;
   name: string;
   role: 'Admin' | 'Member';

@@ -1,6 +1,6 @@
-import { AdminAuth } from '@/features/admin-list/types';
+import { AdminUser } from '@/features/admin-list/types';
 
-export const statusVariantMap: Record<AdminAuth['status'], 'primary' | 'secondary'> = {
+export const statusVariantMap: Record<AdminUser['status'], 'primary' | 'secondary'> = {
   Active: 'primary',
   InActive: 'secondary',
 };

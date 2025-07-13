@@ -1,16 +1,11 @@
 'use client';
 
-import { ListView } from '@/widgets/list-view';
 import { adminData } from '../data/adminList';
 import { useAdminListActions } from '../hooks/useAdminListActions';
+import AdminListWidget from '@/widgets/admin-list/AdminListWidget';
 
 export default function AdminListView() {
   const { headerButtons } = useAdminListActions();
 
-  return (
-    <ListView
-      data={adminData}
-      // headerButtons={headerButtons}
-    />
-  );
+  return <AdminListWidget data={adminData} />;
 }

@@ -2,18 +2,26 @@ import { COLORS } from '@/shared/design/foundation/color';
 
 type ButtonVariant = 'primary' | 'secondary' | 'neutral';
 type ButtonColor = 'default' | 'hover' | 'press' | 'focus' | 'disable' | 'outline';
-// type ButtonSize = 'sm' | 'md' | 'lg';
+type ButtonSize = 'sm' | 'md' | 'lg';
 
 interface ButtonProps {
-  variant?: ButtonVariant; // Button variant
-  color?: ButtonColor; // Button color
-  startIcon?: React.ReactNode; // Icon at the start
-  endIcon?: React.ReactNode; // Icon at the end
-  children: React.ReactNode; // Button content
+  variant?: ButtonVariant; // 버튼 스타일 종류
+  color?: ButtonColor; // 버튼 색상 상태
+  size?: ButtonSize; // 버튼 크기
+  startIcon?: React.ReactNode; // 왼쪽 아이콘
+  endIcon?: React.ReactNode; // 오른쪽 아이콘
+  children: React.ReactNode; // 버튼 내용
 }
 
-const BaseButton = ({ variant = 'primary', color = 'default', startIcon, endIcon, children }: ButtonProps) => {
-  const baseStyles = 'text-[12px] px-[10px] py-[5px] inline-flex items-center justify-center rounded-full';
+// 사이즈별 스타일 정의 (빌드업 단계)
+const sizeStyles: Record<ButtonSize, string> = {
+  sm: 'text-[16px] px-[12px] py-[6px]',
+  md: 'text-[16px] px-[20px] py-[8px]',
+  lg: 'text-[16px] px-[24px] py-[12px]',
+};
+
+const BaseButton = ({ variant = 'primary', color = 'default', size = 'sm', startIcon, endIcon, children }: ButtonProps) => {
+  const baseStyles = 'inline-flex items-center justify-center rounded-full';
 
   const variants = {
     primary: {
@@ -97,7 +105,7 @@ const BaseButton = ({ variant = 'primary', color = 'default', startIcon, endIcon
   };
 
   return (
-    <span style={{ ...variants[variant][color] }} className={`${baseStyles}`}>
+    <span style={{ ...variants[variant][color] }} className={`${baseStyles} ${sizeStyles[size]}`}>
       {startIcon && <span className="mr-1">{startIcon}</span>}
       {children}
       {endIcon && <span className="ml-1">{endIcon}</span>}

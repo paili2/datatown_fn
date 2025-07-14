@@ -16,8 +16,8 @@ const AdminListToolbar = () => {
       <div className={styles.container}>
         <Input searchPlaceholder="관리자 검색" {...useAdminListSearch()} />
         <div className={styles.buttonGroup}>
-          <BaseButton variant="secondary" color="default" children="delete" />
-          <BaseButton variant="primary" color="default" children="add" />
+          <BaseButton variant="secondary" color="default" size="md" children="delete" />
+          <BaseButton variant="primary" color="default" size="md" children="add" />
         </div>
       </div>
     </div>

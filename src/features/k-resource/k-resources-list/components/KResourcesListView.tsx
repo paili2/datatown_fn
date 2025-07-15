@@ -1,10 +1,15 @@
 'use client';
 
 import Badge from '@/shared/ui/badge/Badge';
-import { ListView, ColumnConfig } from '@/__deprecated__/list-view';
-import { kResourcesData } from '../data/kResourcesList';
-import { KResource } from '../types';
+import { ListView } from '@/__deprecated__/list-view';
+import { kResourcesData } from '../../../../entities/k-resources/api/kResourcesList';
+import { KResource } from '../../../../entities/k-resources/model';
 import { useKResourcesListActions } from '../hooks/useKResourcesListActions';
+import { ColumnConfig } from '@/shared/ui/table';
+
+interface KResourcesListViewProps {
+  data: KResource[];
+}
 
 export default function KResourcesListView() {
   const { headerButtons } = useKResourcesListActions();

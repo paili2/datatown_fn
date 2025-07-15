@@ -6,7 +6,7 @@ const styles = {
   tableHeaderCell: 'px-4 py-3 font-normal text-gray-500 text-start text-theme-sm dark:text-gray-400',
 };
 
-const AdminListTableHeader = () => (
+const KResourceHeader = () => (
   <thead className={styles.tableHeader}>
     <TableRow>
       <HeaderColumn cellClass={styles.tableHeaderCell} />
@@ -14,4 +14,4 @@ const AdminListTableHeader = () => (
   </thead>
 );
 
-export default AdminListTableHeader;
+export default KResourceHeader;

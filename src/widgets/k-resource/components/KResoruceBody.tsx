@@ -1,9 +1,9 @@
-import { AdminUser } from '@/entities/admins/model';
+import { KResource } from '@/entities/k-resources/model';
 import { TableRow } from '@/shared/ui/table';
 import BodyColumn from '../fragments/BodyColumn';
 
 interface TableBodyProps {
-  adminUsers: AdminUser[];
+  kResources: KResource[];
 }
 
 const styles = {
@@ -11,14 +11,14 @@ const styles = {
   tableCell: 'px-4 py-4 text-gray-700 text-theme-sm dark:text-gray-400',
 };
 
-const AdminListTableBody = ({ adminUsers }: TableBodyProps) => (
+const KResourceTableBody = ({ kResources }: TableBodyProps) => (
   <tbody className={styles.tableBody}>
-    {adminUsers.map((user) => (
-      <TableRow key={user.id}>
-        <BodyColumn cellClass={styles.tableCell} user={user} />
+    {kResources.map((kResource) => (
+      <TableRow key={kResource.resource_id}>
+        <BodyColumn cellClass={styles.tableCell} kResource={kResource} />
       </TableRow>
     ))}
   </tbody>
 );
 
-export default AdminListTableBody;
+export default KResourceTableBody;

@@ -3,6 +3,7 @@ import Button from '@/shared/ui/button/Button';
 import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
 import { range } from '../utils/range';
 
+// 스타일 객체
 const styles = {
   prevText: 'hidden sm:inline',
   nextText: 'hidden sm:inline',
@@ -16,14 +17,12 @@ interface PrevPageButtonProps {
   onPageChange: (page: number) => void;
 }
 
-export const PrevPageButton = ({ currentPage, onPageChange }: PrevPageButtonProps) => {
-  return (
-    <Button size="sm" variant="outline" onClick={() => onPageChange(currentPage - 1)} disabled={currentPage === 1}>
-      <ChevronLeftIcon />
-      <span className={styles.prevText}>이전</span>
-    </Button>
-  );
-};
+export const PrevPageButton = ({ currentPage, onPageChange }: PrevPageButtonProps) => (
+  <Button size="sm" variant="outline" onClick={() => onPageChange(currentPage - 1)} disabled={currentPage === 1}>
+    <ChevronLeftIcon />
+    <span className={styles.prevText}>이전</span>
+  </Button>
+);
 
 interface NextPageButtonProps {
   currentPage: number;
@@ -31,14 +30,12 @@ interface NextPageButtonProps {
   onPageChange: (page: number) => void;
 }
 
-export const NextPageButton = ({ currentPage, totalPages, onPageChange }: NextPageButtonProps) => {
-  return (
-    <Button size="sm" variant="outline" onClick={() => onPageChange(currentPage + 1)} disabled={currentPage === totalPages}>
-      <span className={styles.nextText}>다음</span>
-      <ChevronRightIcon />
-    </Button>
-  );
-};
+export const NextPageButton = ({ currentPage, totalPages, onPageChange }: NextPageButtonProps) => (
+  <Button size="sm" variant="outline" onClick={() => onPageChange(currentPage + 1)} disabled={currentPage === totalPages}>
+    <span className={styles.nextText}>다음</span>
+    <ChevronRightIcon />
+  </Button>
+);
 
 interface PageNumberButtonProps {
   pageNumber: number;
@@ -48,7 +45,6 @@ interface PageNumberButtonProps {
 
 export const PageNumberButton = ({ pageNumber, isActive, onClick }: PageNumberButtonProps) => {
   const buttonClass = [styles.pageNumberButtonBase, isActive ? styles.pageNumberButtonActive : styles.pageNumberButtonInactive].join(' ');
-
   return (
     <button onClick={() => onClick(pageNumber)} className={buttonClass}>
       {pageNumber}
@@ -62,14 +58,12 @@ interface PageListProps {
   onPageChange: (page: number) => void;
 }
 
-export const PageList = ({ currentPage, totalPages, onPageChange }: PageListProps) => {
-  return (
-    <ul className="hidden items-center gap-0.5 sm:flex">
-      {range(1, totalPages).map((pageNumber) => (
-        <li key={pageNumber}>
-          <PageNumberButton pageNumber={pageNumber} isActive={currentPage === pageNumber} onClick={onPageChange} />
-        </li>
-      ))}
-    </ul>
-  );
-};
+export const PageList = ({ currentPage, totalPages, onPageChange }: PageListProps) => (
+  <ul className="hidden items-center gap-0.5 sm:flex">
+    {range(1, totalPages).map((pageNumber) => (
+      <li key={pageNumber}>
+        <PageNumberButton pageNumber={pageNumber} isActive={currentPage === pageNumber} onClick={onPageChange} />
+      </li>
+    ))}
+  </ul>
+);

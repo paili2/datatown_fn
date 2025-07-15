@@ -1,22 +1,22 @@
 import { useState, useMemo } from 'react';
 import { AdminUser } from '@/entities/admins/model';
 
-interface UseAdminListPaginationProps {
+interface UsePaginationProps {
   data: AdminUser[];
   pageSize?: number;
 }
 
-interface UseAdminListPaginationReturn {
+interface UsePaginationReturn {
   currentPage: number;
   totalPages: number;
   paginatedData: any[];
   setCurrentPage: (page: number) => void;
 }
 
-export const useAdminListPagination = ({ data, pageSize = 10 }: UseAdminListPaginationProps): UseAdminListPaginationReturn => {
+export const usePagination = ({ data, pageSize = 10 }: UsePaginationProps): UsePaginationReturn => {
   const [currentPage, setCurrentPage] = useState(1);
 
-  const totalPages = useMemo(() => Math.ceil(data.length / pageSize), [data.length, pageSize]);
+  const totalPages = useMemo(() => Math.ceil(data.length / pageSize), [data, pageSize]);
 
   const paginatedData = useMemo(() => {
     const startIndex = (currentPage - 1) * pageSize;

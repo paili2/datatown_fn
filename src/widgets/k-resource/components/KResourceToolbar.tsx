@@ -2,6 +2,7 @@ import Input from '@/shared/ui/input/Input';
 import BaseButton from '@/shared/ui/button/BaseButton';
 import { Subtitle } from '@/shared/ui/typographys/Subtitle';
 import { useSearch } from '../hooks/useSearch';
+import { PlusIcon } from 'lucide-react';
 
 const styles = {
   container: 'flex flex-col gap-2 px-5 mb-4 sm:flex-row sm:items-center sm:justify-between sm:px-6',
@@ -9,19 +10,18 @@ const styles = {
   buttonGroup: 'flex gap-2',
 };
 
-const AdminListToolbar = () => {
+const KResourceToolbar = () => {
   return (
     <div>
-      <Subtitle className={styles.subtitle}>관리자 목록</Subtitle>
+      <Subtitle className={styles.subtitle}>K-Resource Management</Subtitle>
       <div className={styles.container}>
-        <Input searchPlaceholder="관리자 검색" {...useSearch()} />
+        <Input searchPlaceholder="search" {...useSearch()} />
         <div className={styles.buttonGroup}>
-          <BaseButton variant="secondary" color="default" size="md" children="delete" />
-          <BaseButton variant="primary" color="default" size="md" children="add" />
+          <BaseButton startIcon={<PlusIcon />} variant="primary" color="default" size="md" children="Register New" />
         </div>
       </div>
     </div>
   );
 };
 
-export default AdminListToolbar;
+export default KResourceToolbar;

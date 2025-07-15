@@ -1,6 +1,7 @@
+'use client';
 import { useState } from 'react';
 
-export const useAdminListSearch = (initialValue = '') => {
+export const useSearch = (initialValue = '') => {
   const [searchTerm, setSearchTerm] = useState(initialValue);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {

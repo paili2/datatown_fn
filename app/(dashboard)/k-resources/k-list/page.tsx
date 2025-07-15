@@ -1,13 +1,8 @@
-import { KResourcesListView } from "@/features/k-resource/k-resources-list";
-import PageBreadcrumb from "@/shared/ui/page-breadcrumb/PageBreadCrumb";
+'use client';
+
+import { kResourcesData } from '@/features/k-resource/k-resources-list';
+import KResourceWidget from '@/widgets/k-resource/KResourceWidget';
 
 export default function KResourceList() {
-  return (
-    <div>
-      <PageBreadcrumb pageTitle="K-리소스 리스트" />
-      <div className="space-y-6">
-        <KResourcesListView />
-      </div>
-    </div>
-  );
+  return <KResourceWidget data={kResourcesData} />;
 }

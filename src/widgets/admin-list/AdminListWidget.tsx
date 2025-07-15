@@ -3,8 +3,8 @@ import AdminListTableHeader from './components/AdminListTableHeader';
 import AdminListToolbar from './components/AdminListToolbar';
 import { AdminUser } from '@/entities/admins/model';
 import AdminListPagination from './components/AdminListPagination';
-import { useAdminListPagination } from './hooks/useAdminListPagination';
 import PageBreadcrumb from '@/shared/ui/page-breadcrumb/PageBreadCrumb';
+import { usePagination } from './hooks/usePagination';
 
 export interface AdminListWidgetProps {
   data: AdminUser[];
@@ -17,7 +17,7 @@ const styles = {
 };
 
 const AdminListWidget = ({ data, pageSize = 10 }: AdminListWidgetProps) => {
-  const { currentPage, totalPages, paginatedData, setCurrentPage } = useAdminListPagination({
+  const { currentPage, totalPages, paginatedData, setCurrentPage } = usePagination({
     data,
     pageSize,
   });

@@ -1,4 +1,4 @@
-import { AdminUser } from '@/features/admin-list/types';
+import { AdminUser } from '@/entities/admins/model';
 import { statusVariantMap } from './statusVariantMap';
 import Pill from '@/shared/ui/pill/Pill';
 import { ReactNode } from 'react';

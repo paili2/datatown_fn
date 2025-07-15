@@ -1,4 +1,4 @@
-import { AdminUser } from '@/features/admin-list/types';
+import { AdminUser } from '@/entities/admins/model';
 import { TableRow } from '@/shared/ui/table';
 import { renderCells } from '../renderers/columnRenderer';
 

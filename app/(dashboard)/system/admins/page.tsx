@@ -1,15 +1,9 @@
 'use client';
 
-import PageBreadcrumb from '@/shared/ui/page-breadcrumb/PageBreadCrumb';
-import { AdminListView } from '@/features/admin-list';
-
+import AdminListWidget from '@/widgets/admin-list/AdminListWidget';
+import { adminData } from '@/entities/admins/api/adminList';
 import React from 'react';
 
 export default function InternalAccounts() {
-  return (
-    <>
-      <PageBreadcrumb pageTitle="Internal Accounts" />
-      <AdminListView />
-    </>
-  );
+  return <AdminListWidget data={adminData} />;
 }

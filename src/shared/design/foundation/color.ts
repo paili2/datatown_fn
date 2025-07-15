@@ -21,7 +21,8 @@ export const COLORS = {
     gray100: '#F5F5F5',
     gray200: '#E0E0E0',
     gray300: '#BDBDBD',
-    gray400: '#757575',
+    gray400: '#909090', // 추가됨
+    gray450: '#757575',
     gray500: '#212121',
   },
 } as const;

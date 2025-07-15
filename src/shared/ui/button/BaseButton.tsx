@@ -11,6 +11,7 @@ interface ButtonProps {
   startIcon?: React.ReactNode; // 왼쪽 아이콘
   endIcon?: React.ReactNode; // 오른쪽 아이콘
   children: React.ReactNode; // 버튼 내용
+  onClick?: () => void;
 }
 
 // 사이즈별 스타일 정의 (빌드업 단계)
@@ -20,7 +21,7 @@ const sizeStyles: Record<ButtonSize, string> = {
   lg: 'text-[16px] px-[24px] py-[12px]',
 };
 
-const BaseButton = ({ variant = 'primary', color = 'default', size = 'sm', startIcon, endIcon, children }: ButtonProps) => {
+const BaseButton = ({ variant = 'primary', color = 'default', size = 'sm', startIcon, endIcon, children, onClick }: ButtonProps) => {
   const baseStyles = 'inline-flex items-center justify-center rounded-full';
 
   const variants = {
@@ -105,7 +106,7 @@ const BaseButton = ({ variant = 'primary', color = 'default', size = 'sm', start
   };
 
   return (
-    <span style={{ ...variants[variant][color] }} className={`${baseStyles} ${sizeStyles[size]}`}>
+    <span onClick={onClick} style={{ ...variants[variant][color] }} className={`${baseStyles} ${sizeStyles[size]}`}>
       {startIcon && <span className="mr-1">{startIcon}</span>}
       {children}
       {endIcon && <span className="ml-1">{endIcon}</span>}

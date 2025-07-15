@@ -1,4 +1,4 @@
-import { AdminUser } from '../types';
+import { AdminUser } from '../model';
 
 export const adminData: AdminUser[] = [
   {

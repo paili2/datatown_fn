@@ -1,9 +1,10 @@
-import PendingPartners from "@/features/pendingpartners/components/PendingPartners";
+import PendingPartnersWidget from '@/widgets/pendingpartners/PendingPartnersWidget';
+import { initialPendingPartners } from '@/entities/pendingpartners/api/partnersList';
 
 export default function PendingPartnersPage() {
   return (
-    <div className="flex flex-col gap-4">
-      <PendingPartners />
-    </div>
+    <>
+      <PendingPartnersWidget data={initialPendingPartners} />
+    </>
   );
 }

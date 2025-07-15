@@ -1,7 +1,7 @@
 import React from 'react';
 import { TableCell } from '@/shared/ui/table';
 import { adminColumns } from '../config/columns';
-import { AdminUser } from '@/features/admin-list/types';
+import { AdminUser } from '@/entities/admins/model';
 
 type TableCellVariant = 'header' | 'body';
 

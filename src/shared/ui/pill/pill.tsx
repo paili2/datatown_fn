@@ -39,8 +39,9 @@ const Pill: React.FC<PillProps> = ({ variant = 'primary', color = 'default', sta
         color: COLORS.neutral.white,
       },
       outline: {
-        backgroundColor: COLORS.primary.base,
-        color: COLORS.neutral.white,
+        backgroundColor: COLORS.neutral.white,
+        color: COLORS.primary.base,
+        border: `1px solid ${COLORS.primary.base}`,
       },
     },
     secondary: {
@@ -67,6 +68,7 @@ const Pill: React.FC<PillProps> = ({ variant = 'primary', color = 'default', sta
       outline: {
         backgroundColor: COLORS.secondary.base,
         color: COLORS.neutral.white,
+        border: `1px solid ${COLORS.secondary.base}`,
       },
     },
     neutral: {

@@ -1,7 +1,7 @@
 import Input from '@/shared/ui/input/Input';
 import BaseButton from '@/shared/ui/button/BaseButton';
 import { Subtitle } from '@/shared/ui/typographys/Subtitle';
-import { useAdminListSearch } from '@/widgets/list-view/hooks/useAdminListSearch';
+import { useAdminListSearch } from '@/__deprecated__/list-view/hooks/useAdminListSearch';
 
 const styles = {
   container: 'flex flex-col gap-2 px-5 mb-4 sm:flex-row sm:items-center sm:justify-between sm:px-6',

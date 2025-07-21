@@ -1,7 +1,8 @@
 import { KResource } from '@/entities/k-resources/model';
-import Pill from '@/shared/ui/pill/Pill';
+
 import { ReactNode } from 'react';
 import { statusVariantMap } from './statusVariantMap';
+import Pill from '@/shared/ui/pill/Pill';
 
 interface ColumnConfig<T> {
   key: keyof T;

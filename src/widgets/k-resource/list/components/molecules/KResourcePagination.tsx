@@ -1,6 +1,6 @@
 'use client';
 
-import { NextPageButton, PageList, PrevPageButton } from './atoms/Pagination';
+import { NextPageButton, PageList, PrevPageButton } from '../atoms/Pagination';
 
 interface KResourcePaginationProps {
   currentPage: number;

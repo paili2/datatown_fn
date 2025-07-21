@@ -1,7 +1,7 @@
 import Input from '@/shared/ui/input/Input';
 import BaseButton from '@/shared/ui/button/BaseButton';
 import { Subtitle } from '@/shared/ui/typographys/Subtitle';
-import { useSearch } from '../hooks/useSearch';
+import { useSearch } from '../../list/hooks/useSearch';
 import { PlusIcon } from 'lucide-react';
 
 const styles = {

@@ -1,5 +1,5 @@
 import { TableRow } from '@/shared/ui/table';
-import HeaderColumn from './atoms/HeaderColumn';
+import HeaderColumn from '../atoms/HeaderColumn';
 
 const styles = {
   tableHeader: 'border-gray-100 border-y dark:border-white/[0.05]',

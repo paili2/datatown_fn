@@ -1,15 +1,15 @@
 'use client';
 
-import AppHeader from '@/widgets/layout/AppHeader';
-import Backdrop from '@/widgets/layout/Backdrop';
-import AppSidebar from '@/widgets/layout/sidebar/AppSidebar';
-import { useSidebarStore } from '@/widgets/layout/sidebar/hooks/useSidebarStore';
-import { isDesktopSidebarOpen } from '@/widgets/layout/sidebar/utils/sidebarUtils';
+import AppHeader from '@/shared/layout/AppHeader';
+import Backdrop from '@/shared/layout/Backdrop';
+import AppSidebar from '@/shared/layout/AppSiderbar/AppSidebar';
+import { useSidebarStore } from '@/shared/layout/AppSiderbar/hooks/useSidebarStore';
+import { isDesktopSidebarOpen } from '@/shared/layout/AppSiderbar/utils/sidebarUtils';
 import React from 'react';
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
-  const { isExpanded, isMobileOpen, isHovered } = useSidebarStore();
-  const desktopOpen = isDesktopSidebarOpen(isExpanded, isHovered);
+  const { isExpanded, isMobileOpen } = useSidebarStore();
+  const desktopOpen = isDesktopSidebarOpen(isExpanded);
   const mainContentMargin = isMobileOpen ? 'ml-0' : desktopOpen ? 'lg:ml-[290px]' : 'lg:ml-[90px]';
 
   return (

@@ -5,4 +5,6 @@ export interface PendingPartners {
   grade: string;
   request_at: string;
   primary_contact_name: string;
+  avatarSrc: string;
+  status: 'online' | 'offline';
 }

@@ -34,9 +34,10 @@ export const staffsColumns: ColumnConfig<Staff>[] = [
     key: 'status',
     header: '상태',
     render: (item) => (
-      <Pill color="default" variant={statusVariantMap[item.status]}>
-        {item.status}
-      </Pill>
+      // <Pill color="default" variant={statusVariantMap[item.status]}>
+      //   {item.status}
+      // </Pill>
+      <span className="font-medium">{item.status}</span>
     ),
   },
 ];
